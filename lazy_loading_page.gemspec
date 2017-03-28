@@ -9,9 +9,9 @@ Gem::Specification.new do |s|
   s.version     = LazyLoadingPage::VERSION
   s.authors     = ["Jignesh Satam"]
   s.email       = ["jigneshsatam@gmail.com"]
-  s.homepage    = "TODO"
-  s.summary     = "TODO: Summary of LazyLoadingPage."
-  s.description = "TODO: Description of LazyLoadingPage."
+  s.homepage    = "https://github.com/JigneshSatam/lazy_loading_page"
+  s.summary     = "LazyLoadingPage loads heay pages lazily. Single heavy request is broken in small requests."
+  s.description = "LazyLoadingPage loads heay pages lazily. Single heavy request is broken in small requests, so no timeouts and no congestion of requests."
   s.license     = "MIT"
 
   s.files = Dir["{app,config,db,lib}/**/*", "MIT-LICENSE", "Rakefile", "README.rdoc"]

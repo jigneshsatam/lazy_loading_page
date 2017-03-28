@@ -1,4 +1,4 @@
-("turbolinks:load ready".split(" ")).forEach(function(e){
+("turbolinks:load DOMContentLoaded ready".split(" ")).forEach(function(e){
   document.addEventListener(e, function() {
     lazyLoad();
   })

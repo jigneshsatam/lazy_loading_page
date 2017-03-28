@@ -7,8 +7,5 @@ module LazyLoadingPage
         helper LazyLoadingPage::ApplicationHelper
       end
     end
-    initializer "lazy_loading_page.precompile" do |app|
-     app.config.assets.precompile += %w( lazy_loading_page/lazy_load.js )
-   end
   end
 end
