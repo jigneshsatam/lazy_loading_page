@@ -60,11 +60,14 @@ function addLoader(ele){
 function ajaxCallback(xhttp, id) {
   var elementToReplace = document.querySelectorAll("[data-id='"+id+"']")[0];
   if (xhttp.readyState == 4 && xhttp.status == 200) {
+    var parser = new DOMParser();
+    var doc = parser.parseFromString(xhttp.responseText, "text/html");
+    var newElements = doc.querySelector("body");
     if (window.$ !== undefined){
     // if (false){
       new_ele = $(xhttp.responseText);
-      if (new_ele.find("body").length > 0){
-        new_ele = new_ele.find("body");
+      if (newElements !== null){
+        new_ele = $(newElements.innerHTML);
       }
       $(elementToReplace).replaceWith(new_ele);
       $("."+ id).remove();
@@ -72,9 +75,6 @@ function ajaxCallback(xhttp, id) {
     else{
       var parentElement = elementToReplace.parentNode;
       var template = document.createElement("template");
-      var parser = new DOMParser();
-      var doc = parser.parseFromString(xhttp.responseText, "text/html");
-      var newElements = doc.querySelector("body");
       if (newElements !== null){
         template.innerHTML = newElements.innerHTML;
       }
