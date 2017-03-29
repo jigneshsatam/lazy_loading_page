@@ -1,7 +1,10 @@
 ("turbolinks:load DOMContentLoaded ready".split(" ")).forEach(function(e){
-  document.addEventListener(e, function() {
-    lazyLoad();
-  })
+  if (window.lazyLoaderInitialize === undefined) {
+    document.addEventListener(e, function() {
+      lazyLoad();
+    })
+    window.lazyLoaderInitialize = true
+  }
 });
 
 function lazyLoad(){
@@ -58,32 +61,28 @@ function ajaxCallback(xhttp, id) {
   var elementToReplace = document.querySelectorAll("[data-id='"+id+"']")[0];
   if (xhttp.readyState == 4 && xhttp.status == 200) {
     if (window.$ !== undefined){
+    // if (false){
       new_ele = $(xhttp.responseText);
+      if (new_ele.find("body").length > 0){
+        new_ele = new_ele.find("body");
+      }
       $(elementToReplace).replaceWith(new_ele);
       $("."+ id).remove();
     }
     else{
       var parentElement = elementToReplace.parentNode;
       var template = document.createElement("template");
-      template.innerHTML = xhttp.responseText;
+      var parser = new DOMParser();
+      var doc = parser.parseFromString(xhttp.responseText, "text/html");
+      var newElements = doc.querySelector("body");
+      if (newElements !== null){
+        template.innerHTML = newElements.innerHTML;
+      }
+      else{
+        template.innerHTML = xhttp.responseText;
+      }
       var newElement = template.content.firstElementChild;
       parentElement.replaceChild(newElement, elementToReplace);
-      // var parser = new DOMParser();
-      // var doc = parser.parseFromString(xhttp.responseText, "text/html");
-      // var newElements = doc.querySelector("body");
-      // parentElement.replaceChild(newElements, elementToReplace);
-      // while (oldParent.childNodes.length > 0) {
-      //   newParent.appendChild(oldParent.childNodes[0]);
-      // }
-      // if (newElements.firstElementChild !== null){
-      //   var parentElement =  elementToReplace.parentNode;
-      //   var newElement = newElements.firstElementChild;
-      //   parentElement.replaceChild( newElement, elementToReplace);
-      //   while(newElement.nextElementSibling !== null){
-      //     newElement = newElement.nextElementSibling;
-      //     parentElement.appendChild(newElement);
-      //   }
-      // }
     }
   }
 }
