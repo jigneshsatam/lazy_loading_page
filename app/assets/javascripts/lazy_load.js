@@ -9,17 +9,30 @@
 
 function lazyLoad(){
   var $lazy_loaders = document.querySelectorAll(".lazy_load:not([data-later='true']):not([data-loading='started'])");
-  for (var i = 0; i < $lazy_loaders.length; i++) {
+  lazyLoadElements($lazy_loaders);
+}
+
+function lazyLoadElements(elements){
+  for (var i = 0; i < elements.length; i++) {
     (function(i){
-      $lazy_loader = $lazy_loaders[i];
-      loadElement($lazy_loader);
+      $lazy_loader = elements[i];
+      lazyLoadElement($lazy_loader);
     })(i);
   };
 }
 
-function loadElement(ele){
-  if ((window.jQuery !== undefined || window.$ !== undefined) && ele instanceof jQuery)
-    ele = ele[0];
+function delayedLoading(ele){
+  if ((ele instanceof NodeList) || ((window.jQuery !== undefined || window.$ !== undefined) && (ele instanceof jQuery))) {
+    lazyLoadElements(ele);
+  }
+  else if(ele instanceof HTMLElement){
+    lazyLoadElement(ele);
+  }
+}
+
+function lazyLoadElement(ele){
+  if (!ele.classList.contains("lazy_load"))
+    return false;
   var id = ele.getAttribute("data-id");
   var url = ele.getAttribute("data-url");
   if (ele.getAttribute("data-loader") != "false")
