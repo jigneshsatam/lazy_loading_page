@@ -178,6 +178,6 @@ function callbackFor(ele, option, xhttp){
     var extractAttributes = userFunctionArray[1].split(")")[0];
     var attributes = extractAttributes.split(",").map(function(arg){return arg.trim()})
     var functionName = userFunctionArray[0];
-    eval(functionName).call(xhttp, ...attributes);
+    eval(functionName).apply(xhttp, attributes);
   }
 }
