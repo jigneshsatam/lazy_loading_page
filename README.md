@@ -60,12 +60,14 @@ Following are some **configuration examples**:
 
 <%= lazy_load("http://lazy-loading-page-app.herokuapp.com/notifications?page=1&count=5", later: true, id: "later_lazy_loader",  failure: "onSuccess(my_arg1)", complete: "onComplete()") %>
 ```
-##### Note
+### Note
 When using configuration option `later: true` **explicit trigger** the request call.
 By calling the function `delayedLoading(elementToLoad);` in your javascript and passing the **lazy_loading element/elements** as argument.
 **lazy_loading element/elements has class** `lazy_load`
 
 ***Checkout the*** [***Demo***](http://lazy-loading-page-app.herokuapp.com/)
+
+***lazy-loading-page app implementation*** [@Github](https://github.com/JigneshSatam/lazy_loading_page_app)
 
 
 ### .html.haml example:
