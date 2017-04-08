@@ -10,11 +10,11 @@ Gem::Specification.new do |s|
   s.authors     = ["Jignesh Satam"]
   s.email       = ["jigneshsatam@gmail.com"]
   s.homepage    = "https://github.com/JigneshSatam/lazy_loading_page"
-  s.summary     = "LazyLoadingPage loads heay pages lazily. Single heavy request is broken in small requests."
-  s.description = "LazyLoadingPage loads heay pages lazily. Single heavy request is broken in small requests, so no timeouts and no congestion of requests."
+  s.summary     = "LazyLoadingPage loads heay pages lazily that is as an when required. Single heavy request is broken in small requests."
+  s.description = "LazyLoadingPage loads heay pages lazily that is as an when required. Single heavy request is broken in small requests, so no timeouts and no congestion of requests. The gem reduces page load time and reduces server ram by loading important content of the page in the first call and then by triggering calls to load the remaining page. The gem give Reactjs like functionality in your ruby-on-rails application."
   s.license     = "MIT"
 
-  s.files = Dir["{app,config,db,lib}/**/*", "MIT-LICENSE", "Rakefile", "README.rdoc"]
+  s.files = Dir["{app,config,db,lib}/**/*", "MIT-LICENSE", "Rakefile", "README.rdoc", "README.md"]
   s.test_files = Dir["test/**/*"]
 
   s.add_dependency "rails"
