@@ -9,6 +9,9 @@ module LazyLoadingPage
       options[:later].present? && (options[:later].to_s.downcase == "true") && (data_merge_hash[:later] = true)
       options[:loader].present? && (options[:loader].to_s.downcase == "off") && (data_merge_hash[:loader] = false)
       options[:type].present? && (["script", "json"].include?(options[:type])) && (data_merge_hash[:type] = options[:type])
+      options[:success].present? && data_merge_hash[:success] = options[:success]
+      options[:failure].present? && data_merge_hash[:failure] = options[:failure]
+      options[:complete].present? && data_merge_hash[:complete] = options[:complete]
       content_tag("input", nil, type:"hidden", id: id, class: classes, data: {id: SecureRandom.uuid, url: url}.merge!(data_merge_hash))
     end
   end
