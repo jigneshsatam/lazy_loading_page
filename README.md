@@ -1,9 +1,9 @@
 # lazy_loading_page
-***Load page lazily as an when required***
+***Load page lazily as and when required***
 ***
 
 
-lazy_loading_page is a gem that helps to **load page lazily** that is as an **when required**. The gem ***reduces page load time*** and ***reduces server ram*** by loading important content of the page in the first call and then by triggering calls to load the remaining page. The gem give **Reactjs** like **functionality** in your ruby-on-rails application.
+lazy_loading_page is a gem that helps to **load page lazily** that is as and **when required**. The gem ***reduces page load time*** and ***reduces server ram*** by loading important content of the page in the first call and then by triggering calls to load the remaining page. The gem give **Reactjs** like **functionality** in your ruby-on-rails application.
 
 ## Installation
 
@@ -118,3 +118,7 @@ To install this gem onto your local machine, run `bundle exec rake install`. To 
 3. Commit your changes (`git commit -am 'Add some feature'`)
 4. Push to the branch (`git push origin my-new-feature`)
 5. Create a new Pull Request
+
+## License
+The gem is available as open source under the terms of the [MIT License](http://opensource.org/licenses/MIT).
+
